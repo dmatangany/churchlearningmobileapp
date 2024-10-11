@@ -10,6 +10,7 @@ import 'package:lesson_delivery_app_ui/widgets/rating_stars.dart';
 import 'package:provider/provider.dart';
 import '../Provider/exam_screen_provider.dart';
 import '../Provider/question_screen_provider.dart';
+import 'package:collection/collection.dart';
 
 class ChoiceScreen extends StatefulWidget {
   final ModuleQuestion? moduleQuestion;
@@ -23,6 +24,7 @@ class ChoiceScreen extends StatefulWidget {
 class _ChoiceScreenState extends State<ChoiceScreen> {
   DatabaseHelper? databaseHelper;
   int? selectedRadio = 0;
+  Function eq = const ListEquality().equals;
 
   @override
   void initState() {
@@ -37,7 +39,7 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
     //await restaurantProvider.loadData();
   }
 
-  Widget _buildMenuItem(BuildContext context, QuestionChoice questionChoice, Order order) {
+  Widget _buildMenuItem(BuildContext context, QuestionChoice questionChoice, Order order, ModuleQuestion question) {
     return Consumer<ChoiceProvider>(
         builder: (context, restaurantProvider, _) {
       return Stack(
@@ -93,7 +95,11 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
                   onChanged: (bool? value) {
                     setState(() {
                       questionChoice.isChecked = value!;
+                      questionChoice.isCorrect =  value!;
                     });
+                    List<int?> correctindexes =question.choices!.where((i) => i.isCorrect!).map((e) => e.choiceIndex).toList();
+                    eq(correctindexes, question.correct) ? question.finalExamStatus = "exam_marked_correct":  question.finalExamStatus = "exam_marked_incorrect";
+                    print("EQ:1 ${correctindexes} 2: ${question.correct} 3: ${ question.finalExamStatus} 4: ${eq(correctindexes, question.correct)}");
                   },
                   controlAffinity: ListTileControlAffinity.leading,  //  <-- leading Checkbox
                 )
@@ -106,7 +112,12 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
             groupValue: selectedRadio, // Use _selectedValue to track the selected option
             onChanged: (int? value) {
               setState(() {
-                selectedRadio = value; // Update _selectedValue when option 3 is selected
+                selectedRadio = value;
+                questionChoice.selected = value;
+                selectedRadio == questionChoice.choiceIndex? questionChoice.isChecked = true: questionChoice.isChecked = false;
+                question.correct!.contains(value) ? questionChoice.isCorrect = true:  questionChoice.isCorrect = false;
+                question.correct!.contains(value) ? question.finalExamStatus = "exam_marked_correct":  question.finalExamStatus = "exam_marked_incorrect";
+                print("Question correct? 1 ${question.correct} 2: ${value} 3: ${questionChoice.choice} 4: ${questionChoice.isCorrect} 5: ${question.finalExamStatus}");
               });
             },
               selected: questionChoice.selected == questionChoice.choiceIndex,
@@ -303,7 +314,7 @@ class _ChoiceScreenState extends State<ChoiceScreen> {
               itemBuilder: (context, index) {
                 QuestionChoice questionChoice = widget.moduleQuestion!.choices![index];
                 Order order = Order();
-                return _buildMenuItem(context, questionChoice, order);
+                return _buildMenuItem(context, questionChoice, order, widget.moduleQuestion!);
               },
             ),
           ),

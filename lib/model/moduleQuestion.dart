@@ -6,6 +6,7 @@ class ModuleQuestion {
    String? questiontext;
    String? questiontype;
    int? rating;
+   String? finalExamStatus;
    List<QuestionChoice>? choices;
    List<int>? correct;
 
@@ -14,6 +15,7 @@ class ModuleQuestion {
     this.questiontext,
     this.questiontype,
     this.rating,
+    this.finalExamStatus,
     this.choices,
 	this.correct,
   });

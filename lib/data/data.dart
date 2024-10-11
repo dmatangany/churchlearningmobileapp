@@ -17,21 +17,21 @@ final _media_3 = CourseMedia(imageUrl: 'assets/images/mediayoutube.jpg', fileUrl
 
 final _media_4 = CourseMedia(imageUrl: 'assets/images/mediamp4.jpg', fileUrl: "https://psconnectpt.alwaysdata.net/sdp/uploads/seaside.mp4",contentType: "MP4",  name: "Seance Session", filename: "seaside.mp4");
 
-final _question_0 = ModuleQuestion(imageUrl: 'assets/images/question.jpg', questiontext: 'Who is Jesus?', questiontype: "single-answer", rating: 4, choices: []);
+final _question_0 = ModuleQuestion(imageUrl: 'assets/images/question.jpg', questiontext: 'Who is Jesus?', questiontype: "single-answer", rating: 4, choices: [], correct: [], finalExamStatus: "not-taken");
 
-final _question_1_choice_1 = QuestionChoice(choice: 'A spirit being', isChecked: false, selected: 0, choiceIndex: 0, moduleQuestion: _question_0);
+final _question_1_choice_1 = QuestionChoice(choice: 'A spirit being', isChecked: false, isCorrect: false, selected: 0, choiceIndex: 0, moduleQuestion: _question_0);
 
-final _question_1_choice_2 = QuestionChoice(choice: 'A woman',  isChecked: false, selected: 0, choiceIndex: 1, moduleQuestion: _question_0);
+final _question_1_choice_2 = QuestionChoice(choice: 'A woman',  isChecked: false, isCorrect: false, selected: 0, choiceIndex: 1, moduleQuestion: _question_0);
 
-final _question_1_choice_3 = QuestionChoice(choice: 'The promised  messiah',  isChecked: false, selected: 0, choiceIndex: 2, moduleQuestion: _question_0);
+final _question_1_choice_3 = QuestionChoice(choice: 'The promised  messiah',  isChecked: false, isCorrect: false, selected: 0, choiceIndex: 2, moduleQuestion: _question_0);
 
-final _question_1_choice_4 = QuestionChoice(choice: 'An angel from heaven',  isChecked: false, selected: 0, choiceIndex: 3, moduleQuestion: _question_0);
+final _question_1_choice_4 = QuestionChoice(choice: 'An angel from heaven',  isChecked: false, isCorrect: false, selected: 0, choiceIndex: 3, moduleQuestion: _question_0);
 
-final _question_1 = ModuleQuestion(imageUrl: 'assets/images/question.jpg', questiontext: 'Who is Jesus?', questiontype: "single-answer", rating: 4, choices: [_question_1_choice_1, _question_1_choice_2, _question_1_choice_3, _question_1_choice_4], correct: [2]);
+final _question_1 = ModuleQuestion(imageUrl: 'assets/images/question.jpg', questiontext: 'Who is Jesus?', questiontype: "single-answer", rating: 4, choices: [_question_1_choice_1, _question_1_choice_2, _question_1_choice_3, _question_1_choice_4], correct: [2], finalExamStatus: "not-taken");
 
-final _question_2 = ModuleQuestion(imageUrl: 'assets/images/question.jpg', questiontext: 'Who is Gabriel?', questiontype: "single-answer", rating: 4,  choices: [_question_1_choice_1, _question_1_choice_2, _question_1_choice_3, _question_1_choice_4], correct: [3]);
+final _question_2 = ModuleQuestion(imageUrl: 'assets/images/question.jpg', questiontext: 'Who is Gabriel?', questiontype: "single-answer", rating: 4,  choices: [_question_1_choice_1, _question_1_choice_2, _question_1_choice_3, _question_1_choice_4], correct: [3], finalExamStatus: "not-taken");
 
-final _question_3 = ModuleQuestion(imageUrl: 'assets/images/question.jpg', questiontext: 'Who is Mary Magdalene?', questiontype: "multiple-answer", rating: 4,  choices: [_question_1_choice_1, _question_1_choice_2, _question_1_choice_3, _question_1_choice_4], correct: [0, 1]);
+final _question_3 = ModuleQuestion(imageUrl: 'assets/images/question.jpg', questiontext: 'Who is Mary Magdalene?', questiontype: "multiple-answer", rating: 4,  choices: [_question_1_choice_1, _question_1_choice_2, _question_1_choice_3, _question_1_choice_4], correct: [0, 1], finalExamStatus: "not-taken");
 
 // ExamSetup
 final _examsetup0 = ExamSetup(
