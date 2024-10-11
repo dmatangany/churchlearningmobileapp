@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@stripe/stripe-react-native": "^0.38.6",
+    "react-native-fbsdk": "^3.0.0"
+  }
+}
